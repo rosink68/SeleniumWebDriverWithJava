@@ -61,6 +61,9 @@ public class WebElementPartialScreenshot {
 		// die Höhe und Weite vom WebElement "Name" ermitteln
 		int width = name.getRect().getDimension().getWidth();
 		int height = name.getRect().getDimension().getHeight();
+		// zum Testen von GitHub nachträglich aufgesplittet
+		System.out.println("Width: " + width);
+		System.out.println("Height: " + height);
 		System.out.println("Width: " + width + " Height: " + height);
 		
 		driver.quit();

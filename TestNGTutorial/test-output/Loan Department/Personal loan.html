@@ -55,11 +55,11 @@ function toggleAllBoxes() {
 <body>
 <h2 align='center'>Personal loan</h2><table border='1' align="center">
 <tr>
-<td>Tests passed/Failed/Skipped:</td><td>9/3/1</td>
+<td>Tests passed/Failed/Skipped:</td><td>4/1/0</td>
 </tr><tr>
-<td>Started on:</td><td>Fri May 02 14:45:15 CEST 2025</td>
+<td>Started on:</td><td>Wed May 07 13:54:34 CEST 2025</td>
 </tr>
-<tr><td>Total time:</td><td>0 seconds (80 ms)</td>
+<tr><td>Total time:</td><td>0 seconds (46 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -80,8 +80,12 @@ function toggleAllBoxes() {
 <td><div><pre>java.lang.AssertionError: expected [true] but found [false]
 	at msg.group.basics.Day1.firstDemo(Day1.java:27)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-... Removed 31 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace2068897588", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace2068897588'><pre>java.lang.AssertionError: expected [true] but found [false]
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+... Removed 21 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1156510694", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1156510694'><pre>java.lang.AssertionError: expected [true] but found [false]
 	at org.testng.Assert.fail(Assert.java:111)
 	at org.testng.Assert.failNotEquals(Assert.java:1590)
 	at org.testng.Assert.assertTrue(Assert.java:57)
@@ -103,101 +107,15 @@ function toggleAllBoxes() {
 	at org.testng.TestRunner.privateRun(TestRunner.java:741)
 	at org.testng.TestRunner.run(TestRunner.java:616)
 	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
-	at org.testng.TestNG.runSuites(TestNG.java:1112)
-	at org.testng.TestNG.run(TestNG.java:1079)
-	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+	at org.testng.SuiteRunner$SuiteWorker.run(SuiteRunner.java:463)
+	at org.testng.internal.thread.ThreadUtil.lambda$execute$0(ThreadUtil.java:64)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:840)
 </pre></div></td>
 <td>0</td>
-<td>msg.group.basics.Day1@4c60d6e9</td></tr>
-<tr>
-<td title='msg.group.basics.Day4.mobileLoginHomeLoan()'><b>mobileLoginHomeLoan</b><br>Test class: msg.group.basics.Day4</td>
-<td><div><pre>org.testng.TestNGException: 
-Parameter &apos;URL&apos; is required by @Test on method mobileLoginHomeLoan but has not been marked @Optional or defined
-in C:\Users\rosink\eclipse-workspace-SeleniumWebDriverWithJava\TestNGTutorial\testng2.xml
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-... Removed 26 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace196732636", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace196732636'><pre>org.testng.TestNGException: 
-Parameter &apos;URL&apos; is required by @Test on method mobileLoginHomeLoan but has not been marked @Optional or defined
-in C:\Users\rosink\eclipse-workspace-SeleniumWebDriverWithJava\TestNGTutorial\testng2.xml
-	at org.testng.internal.Parameters.createParams(Parameters.java:264)
-	at org.testng.internal.Parameters.createParametersForMethod(Parameters.java:352)
-	at org.testng.internal.Parameters.createParameters(Parameters.java:690)
-	at org.testng.internal.Parameters.handleParameters(Parameters.java:885)
-	at org.testng.internal.Parameters.handleParameters(Parameters.java:734)
-	at org.testng.internal.invokers.ParameterHandler.handleParameters(ParameterHandler.java:72)
-	at org.testng.internal.invokers.ParameterHandler.createParameters(ParameterHandler.java:51)
-	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:949)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
-	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
-	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-	at org.testng.TestRunner.privateRun(TestRunner.java:741)
-	at org.testng.TestRunner.run(TestRunner.java:616)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
-	at org.testng.TestNG.runSuites(TestNG.java:1112)
-	at org.testng.TestNG.run(TestNG.java:1079)
-	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-</pre></div></td>
-<td>0</td>
-<td>msg.group.basics.Day4@2d901eb0</td></tr>
-<tr>
-<td title='msg.group.basics.Day3.webLoginCarLoan()'><b>webLoginCarLoan</b><br>Test class: msg.group.basics.Day3</td>
-<td><div><pre>org.testng.TestNGException: 
-Parameter &apos;URL&apos; is required by @Test on method webLoginCarLoan but has not been marked @Optional or defined
-in C:\Users\rosink\eclipse-workspace-SeleniumWebDriverWithJava\TestNGTutorial\testng2.xml
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-... Removed 26 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1955021259", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1955021259'><pre>org.testng.TestNGException: 
-Parameter &apos;URL&apos; is required by @Test on method webLoginCarLoan but has not been marked @Optional or defined
-in C:\Users\rosink\eclipse-workspace-SeleniumWebDriverWithJava\TestNGTutorial\testng2.xml
-	at org.testng.internal.Parameters.createParams(Parameters.java:264)
-	at org.testng.internal.Parameters.createParametersForMethod(Parameters.java:352)
-	at org.testng.internal.Parameters.createParameters(Parameters.java:690)
-	at org.testng.internal.Parameters.handleParameters(Parameters.java:885)
-	at org.testng.internal.Parameters.handleParameters(Parameters.java:734)
-	at org.testng.internal.invokers.ParameterHandler.handleParameters(ParameterHandler.java:72)
-	at org.testng.internal.invokers.ParameterHandler.createParameters(ParameterHandler.java:51)
-	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:949)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
-	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
-	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-	at org.testng.TestRunner.privateRun(TestRunner.java:741)
-	at org.testng.TestRunner.run(TestRunner.java:616)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
-	at org.testng.TestNG.runSuites(TestNG.java:1112)
-	at org.testng.TestNG.run(TestNG.java:1079)
-	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-</pre></div></td>
-<td>0</td>
-<td>msg.group.basics.Day3@35dab4eb</td></tr>
+<td>msg.group.basics.Day1@1a6d8329</td></tr>
 </table><p>
 <table width='100%' border='1' class='invocation-passed'>
 <tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
@@ -208,89 +126,25 @@ in C:\Users\rosink\eclipse-workspace-SeleniumWebDriverWithJava\TestNGTutorial\te
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='msg.group.basics.Day3.mobileSignOutCarLoan()'><b>mobileSignOutCarLoan</b><br>Test class: msg.group.basics.Day3<br>Parameters: firstsetusername, firstsetpassword</td>
+<td title='msg.group.basics.Day4.mobileLoginHomeLoan()'><b>mobileLoginHomeLoan</b><br>Test class: msg.group.basics.Day4<br>Parameters: personalloan.com</td>
 <td></td>
 <td>0</td>
-<td>msg.group.basics.Day3@35dab4eb</td></tr>
-<tr>
-<td title='msg.group.basics.Day3.mobileLoginCarLoan()'><b>mobileLoginCarLoan</b><br>Test class: msg.group.basics.Day3</td>
-<td></td>
-<td>0</td>
-<td>msg.group.basics.Day3@35dab4eb</td></tr>
-<tr>
-<td title='msg.group.basics.Day2.pLoan()'><b>pLoan</b><br>Test class: msg.group.basics.Day2</td>
-<td></td>
-<td>0</td>
-<td>msg.group.basics.Day2@28261e8e</td></tr>
+<td>msg.group.basics.Day4@4145bad8</td></tr>
 <tr>
 <td title='msg.group.basics.Day1.secondTest()'><b>secondTest</b><br>Test class: msg.group.basics.Day1</td>
 <td></td>
 <td>0</td>
-<td>msg.group.basics.Day1@4c60d6e9</td></tr>
+<td>msg.group.basics.Day1@1a6d8329</td></tr>
 <tr>
-<td title='msg.group.basics.Day4.webLoginHomeLoan()'><b>webLoginHomeLoan</b><br>Test class: msg.group.basics.Day4</td>
+<td title='msg.group.basics.Day2.pLoan()'><b>pLoan</b><br>Test class: msg.group.basics.Day2</td>
 <td></td>
 <td>0</td>
-<td>msg.group.basics.Day4@2d901eb0</td></tr>
-<tr>
-<td title='msg.group.basics.Day3.mobileSignOutCarLoan()'><b>mobileSignOutCarLoan</b><br>Test class: msg.group.basics.Day3<br>Parameters: secondsetusername, secondsetpassword</td>
-<td></td>
-<td>0</td>
-<td>msg.group.basics.Day3@35dab4eb</td></tr>
-<tr>
-<td title='msg.group.basics.Day3.mobileSignOutCarLoan()'><b>mobileSignOutCarLoan</b><br>Test class: msg.group.basics.Day3<br>Parameters: thirdsetusername, thirdsetpassword</td>
-<td></td>
-<td>0</td>
-<td>msg.group.basics.Day3@35dab4eb</td></tr>
-<tr>
-<td title='msg.group.basics.Day3.logoutAPICarLoan()'><b>logoutAPICarLoan</b><br>Test class: msg.group.basics.Day3</td>
-<td></td>
-<td>0</td>
-<td>msg.group.basics.Day3@35dab4eb</td></tr>
+<td>msg.group.basics.Day2@63376bed</td></tr>
 <tr>
 <td title='msg.group.basics.Day4.loginAPIHomeLoan()'><b>loginAPIHomeLoan</b><br>Test class: msg.group.basics.Day4</td>
 <td></td>
 <td>0</td>
-<td>msg.group.basics.Day4@2d901eb0</td></tr>
-</table><p>
-<table width='100%' border='1' class='invocation-skipped'>
-<tr><td colspan='4' align='center'><b>SKIPPED TESTS</b></td></tr>
-<tr><td><b>Test method</b></td>
-<td><b>Attribute(s)</b></td>
-<td width="30%"><b>Exception</b></td>
-<td width="10%"><b>Time (seconds)</b></td>
-<td><b>Instance</b></td>
-</tr>
-<tr>
-<td title='msg.group.basics.Day3.loginAPICarLoan()'><b>loginAPICarLoan</b><br>Test class: msg.group.basics.Day3</td>
-<td><div><pre>java.lang.Throwable: Method msg.group.basics.Day3.loginAPICarLoan() on instance msg.group.basics.Day3@35dab4eb depends on not successfully finished methods 
-[msg.group.basics.Day3.webLoginCarLoan() on instance msg.group.basics.Day3@35dab4eb]
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-... Removed 18 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace2050462663", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace2050462663'><pre>java.lang.Throwable: Method msg.group.basics.Day3.loginAPICarLoan() on instance msg.group.basics.Day3@35dab4eb depends on not successfully finished methods 
-[msg.group.basics.Day3.webLoginCarLoan() on instance msg.group.basics.Day3@35dab4eb]
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:159)
-	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
-	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-	at org.testng.TestRunner.privateRun(TestRunner.java:741)
-	at org.testng.TestRunner.run(TestRunner.java:616)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
-	at org.testng.TestNG.runSuites(TestNG.java:1112)
-	at org.testng.TestNG.run(TestNG.java:1079)
-	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-</pre></div></td>
-<td>0</td>
-<td>msg.group.basics.Day3@35dab4eb</td></tr>
+<td>msg.group.basics.Day4@4145bad8</td></tr>
 </table><p>
 </body>
 </html>
