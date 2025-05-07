@@ -26,6 +26,7 @@ public class ArrayVsArrayList {
 		aList.add("Sarah");
 		aList.add("test");
 		aList.add("Selenium");
+		aList.add("Banane");
 		
 		aList.remove(3);
 		System.out.println(aList.get(3));

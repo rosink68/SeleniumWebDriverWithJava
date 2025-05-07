@@ -62,7 +62,6 @@ public class WebElementPartialScreenshot {
 		int width = name.getRect().getDimension().getWidth();
 		int height = name.getRect().getDimension().getHeight();
 		System.out.println("Width: " + width + " Height: " + height);
-		System.out.println("Width: " + width + " Height: " + height);
 		
 		driver.quit();
 	}
