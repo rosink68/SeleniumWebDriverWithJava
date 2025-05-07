@@ -1,0 +1,15 @@
+package msg.group.ExtentReports;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.Test;
+
+public class ExtentReportDemo {
+
+	@Test
+	public void initialDemo() {
+		
+		WebDriver driver = new ChromeDriver();
+		driver.get("");
+	}
+}

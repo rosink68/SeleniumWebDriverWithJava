@@ -1,0 +1,82 @@
+package msg.group.stepdefinitions;
+
+import java.io.IOException;
+
+import org.openqa.selenium.By;
+import org.testng.Assert;
+
+import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+import msg.group.pageobjects.CartPage;
+import msg.group.pageobjects.CheckoutPage;
+import msg.group.pageobjects.ConfirmationPage;
+import msg.group.pageobjects.LandingPage;
+import msg.group.pageobjects.ProductCataloguePage;
+import msg.group.testcomponents.BaseTest;
+
+public class StepDefinitionImpl extends BaseTest {
+
+	public LandingPage landingPage;
+	public ProductCataloguePage productCataloguePage;
+	public CartPage cartPage;
+	public CheckoutPage checkoutPage;
+	public ConfirmationPage confirmationPage;
+	
+	String country = "India";
+
+	@Given("I landed on Ecommerce Page")
+	public void I_landed_on_Ecommerce_Page() throws IOException
+	{
+		landingPage = launchApplication();
+		//code
+	}
+
+	
+	@Given("^Logged in with username (.+) and password (.+)$")
+	public void logged_in_username_and_password(String username, String password)
+	{
+		productCataloguePage = landingPage.loginApplication(username,password);
+	}
+	
+
+	@When("^I add product (.+) to Cart$")
+	public void i_add_product_to_cart(String productName) {
+		
+		//List<WebElement> products = productCataloguePage.getProductList();
+		productCataloguePage.addProductToCart(productName);
+	}
+	
+	@And("^Checkout (.+) and submit the order$")
+	public void checkout_and_submit_the_order(String productName) {
+		
+		cartPage = productCataloguePage.goToCartPage();
+		boolean match = cartPage.verifyProductDisplay(productName);
+		Assert.assertTrue(match);
+		CheckoutPage checkoutPage = cartPage.goToCheckout();
+		
+		checkoutPage.selectCountry(country);
+		confirmationPage = checkoutPage.submitOrder();
+	}
+	
+	// {string} wird durch den Text "THANKYOU FOR THE ORDER." ersetzt <== ist keine Variable wie Username und Passwort
+	// {string} bedeutet, dass der Text in Hochkammas vor message genommen wird und in die Variable String gepackt wird
+	@Then("{string} message is displayed on ConfirmationPage")
+	public void message_is_displayed_on_confirmationPage(String string) {
+		
+		// Hilfsschritt
+		confirmationPage.waitForElementToAppear(By.tagName("h1"));
+		String confirmMessage = confirmationPage.verifyConfirmationMessage();
+		Assert.assertTrue(confirmMessage.equalsIgnoreCase(string));		
+		
+		driver.quit();
+	}
+    
+    @Then("^\"([^\"]*)\" message is displayed$")
+    public void something_message_is_displayed(String strArg1) throws Throwable {
+   
+    	Assert.assertEquals(strArg1, landingPage.getErrorMessage());
+    	driver.close();
+    }
+}

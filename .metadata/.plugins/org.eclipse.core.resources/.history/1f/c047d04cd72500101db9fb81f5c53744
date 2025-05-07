@@ -1,0 +1,5 @@
+package msg.group.data;
+
+public class DataReader {
+
+}

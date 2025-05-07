@@ -1,0 +1,21 @@
+package msg.group.tests;
+
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+import msg.group.pageobjects.ProductCataloguePage;
+import msg.group.testcomponents.BaseTest;
+
+public class ErrorValidationsTest extends BaseTest{
+	
+	@Test
+	public void submitOrder() {
+		
+		// PW ist inkorrekt
+		landingPage.loginApplication("ewaldostehr@gmail.com", "Paul3004");	
+		String errorMessage = landingPage.getErrorMessage();		
+		
+		Assert.assertEquals("", errorMessage);
+	}
+
+}

@@ -1,0 +1,20 @@
+package msg.group.testcomponents;
+
+import org.testng.IRetryAnalyzer;
+import org.testng.ITestResult;
+
+public class Retry implements IRetryAnalyzer {
+	
+	/**
+	 * Automatisches Wiederholen von fehlgeschlagenen Tests.
+	 */
+
+	@Override
+	public boolean retry(ITestResult result) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	
+	
+
+}

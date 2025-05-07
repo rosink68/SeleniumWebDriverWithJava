@@ -1,0 +1,10 @@
+package msg.group.data;
+
+public class DataReader {
+
+	public void getJsonDataToMap() {
+		
+		File
+		
+	}
+}

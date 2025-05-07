@@ -1,0 +1,60 @@
+package msg.group.testcomponents;
+
+import org.testng.ITestContext;
+import org.testng.ITestListener;
+import org.testng.ITestResult;
+
+import com.aventstack.extentreports.ExtentReports;
+
+import msg.group.resources.ExtentReporterNG;
+
+public class Listeners implements ITestListener {
+
+	@Override
+	public void onTestStart(ITestResult result) {
+		
+		// wird vor Start irgendeines Testausgeführt
+		
+	}
+
+	@Override
+	public void onTestSuccess(ITestResult result) {
+		
+		// wird NUR nach einem erfolgreichen Test ausgeführt
+	}
+
+	@Override
+	public void onTestFailure(ITestResult result) {
+		
+		// wird NUR nach einem fehlgeschlagenen Test ausgeführt
+	
+		// Screenshot vom fehlgeschlagenen Test machen
+		ExtentReports extent = ExtentReporterNG.getReportObject();
+		 = extent.createTest("");
+	}
+
+	@Override
+	public void onTestSkipped(ITestResult result) {
+		
+	}
+
+	@Override
+	public void onTestFailedButWithinSuccessPercentage(ITestResult result) {
+		
+	}
+
+	@Override
+	public void onTestFailedWithTimeout(ITestResult result) {
+		
+	}
+
+	@Override
+	public void onStart(ITestContext context) {
+		
+	}
+
+	@Override
+	public void onFinish(ITestContext context) {
+		
+	}
+}

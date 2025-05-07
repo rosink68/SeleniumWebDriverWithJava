@@ -1,0 +1,20 @@
+package msg.group.tests;
+
+import org.testng.annotations.Test;
+
+import msg.group.pageobjects.ProductCataloguePage;
+import msg.group.testcomponents.BaseTest;
+
+public class ErrorValidationsTest extends BaseTest{
+	
+	// //div[@class='ng-tns-c4-5 ng-star-inserted ng-trigger ng-trigger-flyInOut ngx-toastr toast-error']
+	@Test
+	public void submitOrder() {
+		
+		String productName = "ZARA COAT 3";
+		ProductCataloguePage productCataloguePage = landingPage.loginApplication("ewaldostehr@gmail.com", "Paul3005");	
+
+		
+	}
+
+}

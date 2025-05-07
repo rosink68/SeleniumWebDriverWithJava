@@ -1,0 +1,53 @@
+package msg.group.testcomponents;
+
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.time.Duration;
+import java.util.Properties;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class BaseTest {
+
+	public WebDriver driver;
+	
+	public WebDriver initializeDriver() throws IOException {
+		
+		// properties class <== zieht sich automatisch die .properties-Datei
+		Properties prop = new Properties();
+		// Parameter: Pfad zur Input-Datei
+		// user.dir - liefert der Projektpfad C:\Users\rosink\eclipse-workspace-SeleniumWebDriverWithJava\SeleniumFrameworkDesign
+		FileInputStream fis = new FileInputStream(System.getProperty("user.dir") + "//src//main//java//msg//group//resources");
+		prop.load(fis);
+		String browserName = prop.getProperty("browser").toLowerCase();
+		
+		switch (browserName) {
+		case "chrome": {	
+			driver = new ChromeDriver();
+		}
+		case "firefox": {	
+			driver = new FirefoxDriver();
+		}
+		case "edge": {	
+			driver = new EdgeDriver();
+		}
+		default:
+			driver = new ChromeDriver();
+		}
+
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		
+		return driver;
+	}
+	
+	public void launchApplication() {
+		
+		driver = initializeDriver();
+		
+		
+	}
+}

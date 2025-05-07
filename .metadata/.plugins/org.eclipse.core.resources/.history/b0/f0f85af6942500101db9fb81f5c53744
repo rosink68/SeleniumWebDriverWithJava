@@ -1,0 +1,37 @@
+package msg.group.testcomponents;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.time.Duration;
+import java.util.Properties;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class BaseTest {
+
+	public void initializeDriver() throws IOException {
+		
+		// properties class <== zieht sich automatisch die .properties-Datei
+		Properties prop = new Properties();
+		// Parameter: Pfad zur Input-Datei
+		FileInputStream fis = new FileInputStream("");
+		prop.load(fis);
+		String browserName = prop.getProperty("browser");
+		
+		switch (key) {
+		case value: {
+			
+			yield type;
+		}
+		default:
+			throw new IllegalArgumentException("Unexpected value: " + key);
+		}
+		WebDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+
+	}
+}

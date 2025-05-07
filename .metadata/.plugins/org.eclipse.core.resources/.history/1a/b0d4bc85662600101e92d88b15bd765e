@@ -1,0 +1,67 @@
+package msg.group.tests;
+
+import java.io.IOException;
+
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.reporter.ExtentSparkReporter;
+
+import msg.group.pageobjects.CartPage;
+import msg.group.pageobjects.ProductCataloguePage;
+import msg.group.testcomponents.BaseTest;
+
+public class ErrorValidationsTest extends BaseTest{
+	
+	/**
+	 * Negative Testfälle zur Anwendung.
+	 */
+	
+	@Test(groups = {"ErrorHandling"})
+	public void loginErrorValidation() {
+		
+		// ExtentSparkReporter ist für den Report und sein Aussehen (Konfiguration) zuständig
+		
+		// user.dir - Projektpfad (C:\..\ExtentReports)
+		// reoprts - Pfad, in dem index.html gespeichert wird
+		String path = System.getProperty("user.dir") + "\\reports\\index.html";
+		ExtentSparkReporter reporter = new ExtentSparkReporter(path);
+		
+		// Konfiguration des Reports
+		reporter.config().setReportName("Web Automation Results");
+		reporter.config().setDocumentTitle("Test Results");
+		
+		
+		// ExtentReport steuert die Ausführung der gesamten Berichterstattung 
+		extent = new ExtentReports();
+		extent.attachReporter(reporter);
+		extent.setSystemInfo("Tester", "Max Mustermann");
+
+		
+		// PW ist inkorrekt
+		landingPage.loginApplication("ewaldostehr@gmail.com", "Paul3004");	
+		String errorMessage = landingPage.getErrorMessage();		
+		
+		Assert.assertEquals("Incorrect email or password.", errorMessage);
+	}
+	
+	@Test
+	public void productErrorValidation() throws IOException {
+		
+		String productName = "ZARA COAT 3";
+		
+		// bei erfolgreichen Login wird automatisch zum Produktkatalog (Shop) weitergeleitet
+		ProductCataloguePage productCataloguePage = landingPage.loginApplication("ewaldostehr@gmail.com", "Paul3005");	
+		
+		// Produkt auswählen und in den Einkaufswagen legen
+		productCataloguePage.addProductToCart(productName);
+		CartPage cartPage = productCataloguePage.goToCartPage();
+		
+		// prüfen, ob "ZARA COAT 33" nicht im Warenkorb ist
+		boolean match = cartPage.verifyProductDisplay("ZARA COAT 33");
+		// Test auf False, da "ZARA COAT 3" ausgewählt wurde
+		Assert.assertFalse(match);
+	}
+
+}

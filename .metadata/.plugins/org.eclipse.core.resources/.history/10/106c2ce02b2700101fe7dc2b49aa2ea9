@@ -1,0 +1,33 @@
+package msg.group.testcomponents;
+
+import org.testng.IRetryAnalyzer;
+import org.testng.ITestResult;
+
+public class Retry implements IRetryAnalyzer {
+	
+	/**
+	 * Automatisches Wiederholen von fehlgeschlagenen Tests.
+	 */
+
+	int count = 0;
+	// maximale Anzahl der Reruns (Wiederholungen) des Tests, um sicher zu sein, dass er wirklich fehlschlägt
+	int maxTry = 1;
+	
+	@Override
+	public boolean retry(ITestResult result) {
+		
+		// wird aufgerufen Beendigung eines fehlgeschlagenen Tests automatisch
+		// aufgerufen, um zu fragen, ob der Test erneut ausgeführt werden soll
+		// der Test wird solange wiedrholt, bis false zurückgegeben wird
+		if (count < maxTry) {
+			count++;
+			return true;
+		}
+		
+		// bei Rückgabe von false wird der Test nicht nochmal ausgeführt
+		return false;
+	}
+	
+	
+
+}

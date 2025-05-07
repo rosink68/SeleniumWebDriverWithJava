@@ -1,0 +1,26 @@
+package msg.group.ExtentReports;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+
+import com.aventstack.extentreports.ExtentReports;
+
+public class ExtentReportDemo {
+	
+	@BeforeTest
+	public void config() {
+		
+		ExtentReports 
+	}
+
+	@Test
+	public void initialDemo() {
+		
+		WebDriver driver = new ChromeDriver();
+		driver.get("https://rahulshettyacademy.com/");
+		System.out.println(driver.getTitle());
+		driver.quit();
+	}
+}

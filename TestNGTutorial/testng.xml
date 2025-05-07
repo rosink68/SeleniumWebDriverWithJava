@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<!-- parallel="tests" thread-count="2" bedeutet, dass 2 Tests parallel laufen -->
+<suite name="Loan Department" parallel="tests" thread-count="2">
+  <listeners>
+  	<listener class-name="msg.group.basics.Listeners"/>
+  </listeners>
+
+  <!-- wenn die Parameter hier definiert werden, sind sie in allen Klassen
+  der Suite verfügbar -->
+  <!--  parameter name="URL" value="loandepartment.com"/-->
+
+  <!--  test name="Personal loan" parallel="classes" thread-count="2" -->
+  <test name="Personal loan" >
+  	<!-- URL auf Test-Level-Ebene für "Personal loan" -->
+  	<parameter name="URL" value="personalloan.com"/>
+    <classes>
+      <class name="msg.group.basics.Day1"/>
+      <class name="msg.group.basics.Day2"/>
+      <class name="msg.group.basics.Day4">
+      	<methods>
+      		<include name="loginAPIHomeLoan"/>
+      		<include name="mobileLoginHomeLoan"/>
+      	</methods>
+      </class>
+    </classes>
+  </test>
+
+  <test name="Car loan">
+  	<!-- URL auf Test-Level-Ebene für "Car loan" -->
+  	<parameter name="URL" value="carloan.com"/>
+  	<parameter name="APIKey/usrname" value="123456"/>
+    <classes>
+      <class name="msg.group.basics.Day3">
+      	<methods>
+	      	<!-- schließt genau die Methode aus -->
+      		<!--exclude name="mobilLoginCarLoan"/-->
+	      	<!-- schließt alle Methoden aus, die mit API beginnen -->
+      		<exclude name="API.*"/>
+      	</methods>
+      </class>
+    </classes>
+  </test>
+
+</suite>

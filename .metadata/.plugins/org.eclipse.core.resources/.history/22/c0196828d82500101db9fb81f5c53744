@@ -1,0 +1,12 @@
+package msg.group.data;
+
+import org.apache.commons.io.FileUtils;
+
+public class DataReader {
+
+	public void getJsonDataToMap() {
+		
+		FileUtils.readFileToString(null)
+		
+	}
+}

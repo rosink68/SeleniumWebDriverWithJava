@@ -1,0 +1,12 @@
+ChromeOptions options = new ChromeOptions();
+Map<String, Object> prefs = new HashMap<String, Object>();
+prefs.put("credentials_enable_service", false);
+prefs.put("password_manager_enabled", false); 
+Map<String, Object> profile = new HashMap<String, Object>();
+profile.put("password_manager_leak_detection", false);
+prefs.put("profile", profile);
+options.setExperimentalOption("prefs", prefs);
+		
+WebDriver driver = new ChromeDriver(options);
+//driver.manage().window().maximize();
+driver.get("https://rahulshettyacademy.com/loginpagePractise/");

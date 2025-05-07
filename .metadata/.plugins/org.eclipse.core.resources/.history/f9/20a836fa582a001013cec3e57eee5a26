@@ -1,0 +1,64 @@
+package msg.group.stepdefinitions;
+
+import java.io.IOException;
+import java.util.List;
+
+import org.openqa.selenium.WebElement;
+import org.testng.Assert;
+
+import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.When;
+import msg.group.pageobjects.CartPage;
+import msg.group.pageobjects.CheckoutPage;
+import msg.group.pageobjects.ConfirmationPage;
+import msg.group.pageobjects.LandingPage;
+import msg.group.pageobjects.ProductCataloguePage;
+import msg.group.testcomponents.BaseTest;
+
+public class StepDefinitionImpl extends BaseTest {
+	
+	public LandingPage landingPage;
+	public ProductCataloguePage productCataloguePage;
+	public CartPage cartPage;
+	public CheckoutPage checkoutPage;
+	public ConfirmationPage confirmationPage;
+	
+	String country = "India";
+
+	
+	@Given("I landed on Ecommerce Page")
+	public void i_landed_on_ecommerce_page() throws IOException {
+		
+		landingPage = launchApplication();
+	}
+
+	// (.+) <== man schreibt hier einen regulären Expression, da Username und
+	// Password jeden Wert annehmen können 
+	// um mitzuteilen, dass es reguläre Ausdrücke gibt, wird ^ zu Beginn und $ am Ende geschrieben 
+	@Given("^Logged in with username (.+) and password (.+)$")
+	public void logged_in_with_username_and_password (String username, String password) {
+		
+		productCataloguePage = landingPage.loginApplication(username, password);	
+		
+	}
+	
+	@When("^I add product (.+) to Cart$")
+	public void i_add_product_to_cart(String productName) {
+		
+		//List<WebElement> products = productCataloguePage.getProductList();
+		productCataloguePage.addProductToCart(productName);
+	}
+	
+	@And("^Checkout (.+) and submit the order$")
+	public void checkout_and_submit_the_order(String productName) {
+		
+		cartPage = productCataloguePage.goToCartPage();
+		boolean match = cartPage.verifyProductDisplay(productName);
+		Assert.assertTrue(match);
+		CheckoutPage checkoutPage = cartPage.goToCheckout();
+		
+		checkoutPage.selectCountry(country);
+		confirmationPage = checkoutPage.submitOrder();
+	}
+}

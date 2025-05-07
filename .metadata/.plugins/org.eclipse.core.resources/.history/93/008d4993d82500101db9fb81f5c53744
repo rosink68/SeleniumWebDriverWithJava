@@ -1,0 +1,16 @@
+package msg.group.data;
+
+import java.io.File;
+
+import org.apache.commons.io.FileUtils;
+
+public class DataReader {
+
+	public void getJsonDataToMap() {
+		
+		//read json to string
+		File file = new File(System.getProperty("user.dir") + );
+		FileUtils.readFileToString(file);
+		
+	}
+}

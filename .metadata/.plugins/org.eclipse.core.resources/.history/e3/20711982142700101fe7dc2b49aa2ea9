@@ -1,0 +1,106 @@
+package msg.group.testcomponents;
+
+import java.io.IOException;
+
+import org.openqa.selenium.WebDriver;
+import org.testng.ITestContext;
+import org.testng.ITestListener;
+import org.testng.ITestResult;
+
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.Status;
+
+import msg.group.resources.ExtentReporterNG;
+
+public class Listeners extends BaseTest implements ITestListener {
+
+	ExtentReports extent = ExtentReporterNG.getReportObject();
+	ExtentTest test;
+	// ThreadLocal ist wichtig beim parallelen Ausführen von Test, da ExtentTest test
+	// bei jedem onTestStart überschrieben wird und im Report falsche Ergebnisse erscheinen
+	// ThreadLocal bedeutet, dass jedes erstellte Objekt hat seinen eigenen Thread ==> KEIN überschreiben 
+	ThreadLocal extentTest = new ThreadLocal();
+	
+	@Override
+	public void onTestStart(ITestResult result) {
+		
+		// wird vor Start irgendeines Testausgeführt
+		
+		// für jeden Test wird vor dessen Ausführung ein Eintrag in den Testreport erstellt
+		test = extent.createTest(result.getMethod().getMethodName());
+		// test in ThreadLocal pushen ==> jeder Eintrag bekommt dadurch eine eindeutige ThreadID
+		// every instance of running has its own thread id <== Speicherung in einem Map
+		extentTest.set(extent);
+	}
+
+	@Override
+	public void onTestSuccess(ITestResult result) {
+		
+		// wird NUR nach einem erfolgreichen Test ausgeführt
+	
+		test.log(Status.PASS, "Test passed.");
+	}
+
+	@Override
+	public void onTestFailure(ITestResult result) {
+		
+		// wird NUR nach einem fehlgeschlagenen Test ausgeführt
+	
+		test.log(Status.FAIL, "Test failed.");
+		
+		// Fehlernachricht ausgeben
+		test.fail(result.getThrowable());
+		
+		try {
+			// getTestClass() - liefert die Klasse, in der sich die Methode befindert <== <classes> in der testNG.xml
+			// getRealClass() - reale Klasse im java-File
+			// getField("driver") - von dieser realen Klasse dibt den verwendeten driver
+			driver = (WebDriver) result.getTestClass().getRealClass()
+					.getField("driver").get(result.getInstance());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		// Screenshot vom fehlgeschlagenen Test machen
+		String filePath = null;
+		String methodName = result.getMethod().getMethodName();
+		try {
+			filePath = getScreenshot(methodName, driver);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		// Screenshot zum ExtentReport zufügen
+		test.addScreenCaptureFromPath(filePath, methodName);
+		
+	}
+
+	@Override
+	public void onTestSkipped(ITestResult result) {
+		
+	}
+
+	@Override
+	public void onTestFailedButWithinSuccessPercentage(ITestResult result) {
+		
+	}
+
+	@Override
+	public void onTestFailedWithTimeout(ITestResult result) {
+		
+	}
+
+	@Override
+	public void onStart(ITestContext context) {
+		
+	}
+
+	@Override
+	public void onFinish(ITestContext context) {
+		
+		// Report generieren
+		extent.flush();
+	}
+}

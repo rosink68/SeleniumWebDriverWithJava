@@ -1,0 +1,44 @@
+package msg.group.tests;
+
+import java.io.IOException;
+
+import org.openqa.selenium.By;
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+import msg.group.pageobjects.CartPage;
+import msg.group.pageobjects.CheckoutPage;
+import msg.group.pageobjects.ConfirmationPage;
+import msg.group.pageobjects.ProductCataloguePage;
+import msg.group.testcomponents.BaseTest;
+
+public class ErrorValidationsTest extends BaseTest{
+	
+	@Test
+	public void loginErrorValidation() {
+		
+		// PW ist inkorrekt
+		landingPage.loginApplication("ewaldostehr@gmail.com", "Paul3004");	
+		String errorMessage = landingPage.getErrorMessage();		
+		
+		Assert.assertEquals("Incorrect email or password.", errorMessage);
+	}
+	
+	@Test
+	public void productErrorValidation() throws IOException {
+		
+		String productName = "ZARA COAT 3";
+		
+		// bei erfolgreichen Login wird automatisch zum Produktkatalog (Shop) weitergeleitet
+		ProductCataloguePage productCataloguePage = landingPage.loginApplication("ewaldostehr@gmail.com", "Paul3005");	
+		
+		// Produkt auswählen und in den Einkaufswagen legen
+		productCataloguePage.addProductToCart(productName);
+		CartPage cartPage = productCataloguePage.goToCartPage();
+		
+		// prüfen, ob "ZARA COAT 3" im Warenkorb enthalten ist
+		boolean match = cartPage.verifyProductDisplay(productName);
+		Assert.assertTrue(match);
+	}
+
+}

@@ -1,0 +1,62 @@
+package msg.group.pageobjects;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+import msg.group.abstractcomponents.AbstractComponent;
+
+public class LandingPage extends AbstractComponent {
+
+	WebDriver driver;
+	
+	public LandingPage(WebDriver driver) {
+		
+		// WebDriver zur Parentklasse senden
+		super(driver);
+		
+		// initialization driver
+		this.driver = driver;
+		
+		// Triggern des Initialisieren aller Elemente mit Hilfe der PageFactory 
+		// d.h. alle @FindBy - WebElemente werden initialisiert
+		// zum Initialisieren brauchen alle Elemente den driver <== driver.findElement
+		PageFactory.initElements(driver, this);
+	}
+
+	public void goTo() {
+		driver.get("https://rahulshettyacademy.com/client/");
+	}
+	
+//	WebElement userEmail = this.driver.findElement(By.id("userEmail"));
+	// besser mit PageFactory
+	@FindBy(id = "userEmail")
+	WebElement userEmail;
+	
+//	WebElement password = this.driver.findElement(By.id("userPassword"));
+	@FindBy(id = "userPassword")
+	WebElement userPassword;
+	
+//	WebElement submit = this.driver.findElement(By.id("login"));
+	@FindBy(id = "login")	
+	WebElement submitButton;
+	
+	// //div[@class='ng-tns-c4-5 ng-star-inserted ng-trigger ng-trigger-flyInOut ngx-toastr toast-error']
+	@FindBy(css = "[class*='flyInOut']")
+	WebElement llElement;
+	
+	public ProductCataloguePage loginApplication(String email, String password) {
+		
+//		driver.findElement(By.id("userEmail")).sendKeys("ewaldostehr@gmail.com");
+//		driver.findElement(By.id("userPassword")).sendKeys("Paul3005");
+//		driver.findElement(By.id("login")).click();
+
+		userEmail.sendKeys(email);
+		userPassword.sendKeys(password);
+		submitButton.click();
+		
+		// nach dem Click landet man immer auf der Produktkatalogseite ==> Seite gleich zurückgeben
+		return new ProductCataloguePage(driver);
+	}
+}

@@ -1,0 +1,19 @@
+package msg.group.tests;
+
+import org.testng.annotations.Test;
+
+import msg.group.pageobjects.ProductCataloguePage;
+import msg.group.testcomponents.BaseTest;
+
+public class ErrorValidationsTest extends BaseTest{
+	
+	@Test
+	public void submitOrder() {
+		
+		String productName = "ZARA COAT 3";
+		ProductCataloguePage productCataloguePage = landingPage.loginApplication("ewaldostehr@gmail.com", "Paul3005");	
+
+		
+	}
+
+}

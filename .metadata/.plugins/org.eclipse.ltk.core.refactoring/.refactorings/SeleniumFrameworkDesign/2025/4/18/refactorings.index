@@ -1,0 +1,16 @@
+1745914141383	Rename field 'ngAnimation'
+1745917805275	Rename field 'cartProducts'
+1745918429792	Rename field 'productTitles'
+1745927166360	Rename field 'countryToSelect'
+1745997420375	Delete element
+1745997434539	Rename package 'msg.group'
+1745997646363	Delete element
+1746000595689	Rename type 'StandAloneTest'
+1746013896391	Copy compilation unit
+1746016487910	Rename package 'msg.group.testsuites'
+1746016515915	Move 'testng.xml' to 'testsuites'
+1746016591065	Delete element
+1746016649951	Move 'testng.xml' to 'testsuite'
+1746016656070	Delete element
+1746016765990	Copy file
+1746020957147	Copy file

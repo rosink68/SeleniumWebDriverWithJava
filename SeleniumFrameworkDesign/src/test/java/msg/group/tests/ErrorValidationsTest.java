@@ -1,0 +1,48 @@
+package msg.group.tests;
+
+import java.io.IOException;
+
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+import msg.group.pageobjects.CartPage;
+import msg.group.pageobjects.ProductCataloguePage;
+import msg.group.testcomponents.BaseTest;
+import msg.group.testcomponents.Retry;
+
+public class ErrorValidationsTest extends BaseTest{
+	
+	/**
+	 * Negative Testfälle zur Anwendung.
+	 */
+	
+	// retryAnalyzer sagt, dass der Test wiederholt werden soll, wenn er fehlschlägt
+	@Test(groups = {"ErrorHandling"}, retryAnalyzer = Retry.class)
+	public void loginErrorValidation() {
+		
+		// PW ist inkorrekt
+		landingPage.loginApplication("ewaldostehr@gmail.com", "Paul3004");	
+		String errorMessage = landingPage.getErrorMessage();		
+		
+		Assert.assertEquals("Incorrect email or password.", errorMessage);
+	}
+	
+	@Test(retryAnalyzer = Retry.class)
+	public void productErrorValidation() throws IOException {
+		
+		String productName = "ZARA COAT 3";
+		
+		// bei erfolgreichen Login wird automatisch zum Produktkatalog (Shop) weitergeleitet
+		ProductCataloguePage productCataloguePage = landingPage.loginApplication("ewaldostehr@gmail.com", "Paul3005");	
+		
+		// Produkt auswählen und in den Einkaufswagen legen
+		productCataloguePage.addProductToCart(productName);
+		CartPage cartPage = productCataloguePage.goToCartPage();
+		
+		// prüfen, ob "ZARA COAT 33" nicht im Warenkorb ist
+		boolean match = cartPage.verifyProductDisplay("ZARA COAT 33");
+		// Test auf False, da "ZARA COAT 3" ausgewählt wurde
+		Assert.assertFalse(match);
+	}
+
+}

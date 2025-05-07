@@ -1,0 +1,123 @@
+package msg.group.tests;
+
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.testng.Assert;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
+
+import msg.group.pageobjects.CartPage;
+import msg.group.pageobjects.CheckoutPage;
+import msg.group.pageobjects.ConfirmationPage;
+import msg.group.pageobjects.OrderPage;
+import msg.group.pageobjects.ProductCataloguePage;
+import msg.group.testcomponents.BaseTest;
+
+public class SubmitOrderTest extends BaseTest {
+	
+	/**
+	 * Positive Testfälle zur Anwendung.
+	 */
+
+	String productName = "ZARA COAT 3";
+
+	@Test(dataProvider = "getData", groups = {"Purchase"})
+	// Verwendung eines Object []
+	//public void submitOrder(String email, String password, String productName) throws IOException {
+	public void submitOrder(HashMap<String, String> input) throws IOException {
+		
+		String country = "India";
+		
+		// WebDriver initialisieren und die Startseite (LandingPage) aufrufen
+		// ==> in die @BeforeMethode der Parent class (BaseTest) verschoben
+		//LandingPage landingPage = launchApplication();
+		
+		// bei erfolgreichen Login wird automatisch zum Produktkatalog (Shop) weitergeleitet
+		ProductCataloguePage productCataloguePage = landingPage.loginApplication(input.get("email"), input.get("password"));	
+		
+		// Shop mit Weiterleitung zum Einkaufswagen
+		// Produkt auswählen und in den Einkaufswagen legen
+		productCataloguePage.addProductToCart(input.get("product"));
+		// zum Warenborb "My Cart" gehen <== goToCartPage() befindet sich in der Parentklasse
+		CartPage cartPage = productCataloguePage.goToCartPage();
+		
+		
+		// My Cart mit Weiterleitung auf die Checkout-Page
+		// prüfen, ob "ZARA COAT 3" im Warenkorb enthalten ist
+		boolean match = cartPage.verifyProductDisplay(input.get("product"));
+		Assert.assertTrue(match);
+		CheckoutPage checkoutPage = cartPage.goToCheckout();
+		
+		// Payment mit Weiterleitung zur Bestätigungsseite
+		checkoutPage.selectCountry(country);
+		ConfirmationPage confirmationPage = checkoutPage.submitOrder();
+		
+		
+		// THANKYOU FOR THE ORDER.
+		confirmationPage.waitForElementToAppear(By.tagName("h1"));
+		String confirmMessage = confirmationPage.verifyConfirmationMessage();
+		Assert.assertTrue(confirmMessage.equalsIgnoreCase("THANKYOU FOR THE ORDER."));
+		
+		
+		// in @AfterMethod der Parent class (BaseTest) verschoben
+		//driver.quit();driver.quit();
+	}
+
+	// dieser Test ist abhängig von submitOrder und soll deshalb erst ausgeführt werden, wenn submitOrder ausgeführt wurde
+	@Test(dependsOnMethods = {"submitOrder"})
+	public void OrderHistoryTest() {
+
+		ProductCataloguePage productCataloguePage = landingPage.loginApplication("ewaldostehr@gmail.com", "Paul3005");	
+
+		// da die Methode goToOrderPage() in der AbstractComponent class ist, kann sie
+		// von jeder Klasse aus aufgerufen werden, die AbstractComponent erbt
+		OrderPage orderPage = productCataloguePage.goToOrderPage();
+
+		// Prüfen, ob "ZARA COAT 3" in "Your Orders" enthalten ist <== ist nur drin, wenn submitOrder() erfolgreich ausgeführt wurde 
+		Assert.assertTrue(orderPage.verifyOrderDisplay(productName));	
+	}
+
+	// Daten aus einem JSON-File lesen und daraus einen HashMap erstellen
+	@DataProvider
+	public Object[][] getData() {
+		
+		// getJsonDataToMap gibt eine Liste mit 2 HashMaps zurück
+		List<HashMap<String, String>> data = getJsonDataToMap(System.getProperty("user.dir") + "//src//test//java//msg//group//data//PurchaseOrder.json");
+		
+		return new Object[][] {{data.get(0)}, {data.get(1)}};
+	}
+
+//  // mit 2-dimensionalen Array
+//	@DataProvider
+//	public Object[][] getData() {
+//		
+//		// ein 2-dimensionale Array erstellen
+//		// {{}, {}} bedeutet 2 DataSets <== ein DataSet enthält Usernamen, Passwort und Produkt
+//		return new Object[][] {
+//			{"ewaldostehr@gmail.com", "Paul3005", "ZARA COAT 3"}, 
+//			{"ewaldostehr@gmail.com", "Paul3005", "ADIDAS ORIGINAL"}
+//			};
+//	}
+	
+//	// mit HashMap
+//	@DataProvider
+//	public Object[][] getData() {
+//		
+//		HashMap<String, String> map = new HashMap<String, String>();
+//		map.put("email", "ewaldostehr@gmail.com");
+//		map.put("password", "Paul3005");
+//		map.put("product", "ZARA COAT 3");
+//
+//		HashMap<String, String> map1 = new HashMap<String, String>();
+//		map1.put("email", "ewaldostehr@gmail.com");
+//		map1.put("password", "Paul3005");
+//		map1.put("product", "ADIDAS ORIGINAL");
+//
+//		// {{}, {}} bedeutet 2 DataSets 
+//		return new Object[][] {{map}, {map1}};
+//	}
+
+}
