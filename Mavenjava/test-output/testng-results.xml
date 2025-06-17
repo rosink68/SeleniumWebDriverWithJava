@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="6" passed="6" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2025-06-16T14:42:59 MESZ" name="Suite" finished-at="2025-06-16T14:42:59 MESZ" duration-ms="43">
+    <groups>
+    </groups>
+    <test started-at="2025-06-16T14:42:59 MESZ" name="Test" finished-at="2025-06-16T14:42:59 MESZ" duration-ms="43">
+      <class name="msg.group.SeleniumTest">
+        <test-method signature="browserAutomation()[pri:0, instance:msg.group.SeleniumTest@6d4d66d2]" started-at="2025-06-16T14:42:59 MESZ" name="browserAutomation" finished-at="2025-06-16T14:42:59 MESZ" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- browserAutomation -->
+        <test-method signature="elements()[pri:0, instance:msg.group.SeleniumTest@6d4d66d2]" started-at="2025-06-16T14:42:59 MESZ" name="elements" finished-at="2025-06-16T14:42:59 MESZ" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- elements -->
+      </class> <!-- msg.group.SeleniumTest -->
+      <class name="msg.group.RESTAPITest">
+        <test-method signature="deleteTwitter()[pri:0, instance:msg.group.RESTAPITest@2a265ea9]" started-at="2025-06-16T14:42:59 MESZ" name="deleteTwitter" finished-at="2025-06-16T14:42:59 MESZ" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- deleteTwitter -->
+        <test-method signature="postJira()[pri:0, instance:msg.group.RESTAPITest@2a265ea9]" started-at="2025-06-16T14:42:59 MESZ" name="postJira" finished-at="2025-06-16T14:42:59 MESZ" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- postJira -->
+      </class> <!-- msg.group.RESTAPITest -->
+      <class name="msg.group.AppiumTest">
+        <test-method signature="IOSApps()[pri:0, instance:msg.group.AppiumTest@2892d68]" started-at="2025-06-16T14:42:59 MESZ" name="IOSApps" finished-at="2025-06-16T14:42:59 MESZ" duration-ms="6" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- IOSApps -->
+        <test-method signature="nativeAppAndroid()[pri:0, instance:msg.group.AppiumTest@2892d68]" started-at="2025-06-16T14:42:59 MESZ" name="nativeAppAndroid" finished-at="2025-06-16T14:42:59 MESZ" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- nativeAppAndroid -->
+      </class> <!-- msg.group.AppiumTest -->
+    </test> <!-- Test -->
+  </suite> <!-- Suite -->
+</testng-results>

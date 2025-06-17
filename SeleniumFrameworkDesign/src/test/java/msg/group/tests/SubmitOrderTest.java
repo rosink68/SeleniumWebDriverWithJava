@@ -16,6 +16,10 @@ import msg.group.pageobjects.OrderPage;
 import msg.group.pageobjects.ProductCataloguePage;
 import msg.group.testcomponents.BaseTest;
 
+/**
+ * Diese Klasse enthält Testfälle für die Bestellung und die Bestellhistorie.
+ * Sie erbt von der BaseTest-Klasse, die grundlegende Testfunktionen bereitstellt.
+ */
 public class SubmitOrderTest extends BaseTest {
 	
 	/**
@@ -24,6 +28,14 @@ public class SubmitOrderTest extends BaseTest {
 
 	String productName = "ZARA COAT 3";
 
+
+	/**
+	 * Testfall für die erfolgreiche Bestellung eines Produkts.
+	 * Führt die Anmeldung, Produktauswahl, Checkout und Bestätigung durch.
+	 *
+	 * @param input HashMap mit Testdaten wie Benutzerinformationen und Produktname.
+	 * @throws IOException falls ein Fehler beim Lesen der Testdaten auftritt.
+	 */
 	@Test(dataProvider = "getData", groups = {"Purchase"})
 	// Verwendung eines Object []
 	//public void submitOrder(String email, String password, String productName) throws IOException {
@@ -67,6 +79,10 @@ public class SubmitOrderTest extends BaseTest {
 		//driver.quit();driver.quit();
 	}
 
+	/**
+	 * Testfall für die Überprüfung der Bestellhistorie.
+	 * Dieser Test ist abhängig vom erfolgreichen Abschluss des submitOrder-Testfalls.
+	 */
 	// dieser Test ist abhängig von submitOrder und soll deshalb erst ausgeführt werden, wenn submitOrder ausgeführt wurde
 	@Test(dependsOnMethods = {"submitOrder"})
 	public void OrderHistoryTest() {
@@ -82,17 +98,48 @@ public class SubmitOrderTest extends BaseTest {
 	}
 
 	// Daten aus einem JSON-File lesen und daraus einen HashMap erstellen
+//	@DataProvider
+//	public Object[][] getData() throws IOException {
+//		
+//		// getJsonDataToMap gibt eine Liste mit 2 HashMaps zurück
+//		List<HashMap<String, String>> data = getJsonDataToMap(
+//				System.getProperty("user.dir") + "//src//test//java//msg//group//data//PurchaseOrder.json");
+//		
+//		// der DataProvider akzeptiert HashMaps ==> aus den Einträgen im JSON-File ewird eine Liste
+//		// mit HashMaps (pro DataSet 1 HashMap) erstellt und zurück gegeben
+//		return new Object[][] {{data.get(0)}, {data.get(1)}};
+//	}
+	
+
+	/**
+	 * DataProvider für die Testfälle.
+	 * Liest Testdaten aus einer JSON-Datei und konvertiert sie in eine Liste von HashMaps.
+	 *
+	 * @return ein zweidimensionales Array mit Testdaten.
+	 * @throws IOException falls ein Fehler beim Lesen der JSON-Datei auftritt.
+	 */
+	// Daten aus einem JSON-File lesen und daraus einen HashMap erstellen
 	@DataProvider
 	public Object[][] getData() throws IOException {
 		
-		// getJsonDataToMap gibt eine Liste mit 2 HashMaps zurück
+		// JSON-Daten in eine Liste von 2 HashMaps konvertieren
 		List<HashMap<String, String>> data = getJsonDataToMap(
 				System.getProperty("user.dir") + "//src//test//java//msg//group//data//PurchaseOrder.json");
-		
-		// der DataProvider akzeptiert HashMaps ==> aus den Einträgen im JSON-File ewird eine Liste
+
+		// der DataProvider akzeptiert HashMaps ==> aus den Einträgen im JSON-File wird eine Liste
 		// mit HashMaps (pro DataSet 1 HashMap) erstellt und zurück gegeben
-		return new Object[][] {{data.get(0)}, {data.get(1)}};
+
+		// Initialisiere ein zweidimensionales Array basierend auf der Größe der Datenliste
+		Object[][] dataArray = new Object[data.size()][1];
+
+		// Fülle das Array mit den HashMaps aus der Liste
+		for (int i = 0; i < data.size(); i++) {
+			dataArray[i][0] = data.get(i);
+		}
+
+		return dataArray;
 	}
+
 
 //  // mit 2-dimensionalen Array
 //	@DataProvider

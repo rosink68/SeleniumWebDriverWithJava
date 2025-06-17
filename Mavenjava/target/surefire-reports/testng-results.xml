@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="4" passed="4" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2025-06-16T15:09:46 MESZ" name="Suite" finished-at="2025-06-16T15:09:46 MESZ" duration-ms="35">
+    <groups>
+    </groups>
+    <test started-at="2025-06-16T15:09:46 MESZ" name="Test" finished-at="2025-06-16T15:09:46 MESZ" duration-ms="35">
+      <class name="msg.group.SeleniumTest">
+        <test-method signature="browserAutomation()[pri:0, instance:msg.group.SeleniumTest@43195e57]" started-at="2025-06-16T15:09:46 MESZ" name="browserAutomation" finished-at="2025-06-16T15:09:46 MESZ" duration-ms="4" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- browserAutomation -->
+        <test-method signature="elements()[pri:0, instance:msg.group.SeleniumTest@43195e57]" started-at="2025-06-16T15:09:46 MESZ" name="elements" finished-at="2025-06-16T15:09:46 MESZ" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- elements -->
+      </class> <!-- msg.group.SeleniumTest -->
+      <class name="msg.group.RESTAPITest">
+        <test-method signature="deleteTwitter()[pri:0, instance:msg.group.RESTAPITest@59fd97a8]" started-at="2025-06-16T15:09:46 MESZ" name="deleteTwitter" finished-at="2025-06-16T15:09:46 MESZ" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- deleteTwitter -->
+        <test-method signature="postJira()[pri:0, instance:msg.group.RESTAPITest@59fd97a8]" started-at="2025-06-16T15:09:46 MESZ" name="postJira" finished-at="2025-06-16T15:09:46 MESZ" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- postJira -->
+      </class> <!-- msg.group.RESTAPITest -->
+    </test> <!-- Test -->
+  </suite> <!-- Suite -->
+</testng-results>

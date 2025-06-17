@@ -1,0 +1,128 @@
+package msg.group.testcomponents;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.time.Duration;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Properties;
+
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import msg.group.pageobjects.LandingPage;
+
+public class BaseTest {
+
+	public WebDriver driver;
+	public LandingPage landingPage;
+	
+	public WebDriver initializeDriver() throws IOException {
+		
+		// properties class <== zieht sich automatisch die .properties-Datei,
+		// um die Properties auszulesen
+		Properties prop = new Properties();
+		// Parameter: Pfad zur Input-Datei
+		// user.dir - liefert der Projektpfad C:\Users\rosink\eclipse-workspace-SeleniumWebDriverWithJava\SeleniumFrameworkDesign
+		FileInputStream fis = new FileInputStream(System.getProperty("user.dir") + 
+				"//src//main//java//msg//group//resources//GlobalData.properties");
+		prop.load(fis);
+		
+		// wenn der SystemBrowser (z. Bsp. beim Start Maven von der Konsole) keinen BrowserName zurückgibt,
+		// dann den BrowserNamen aus der GlobalProperties Datei verwenden
+		String browserName = System.getProperty("browser") != null 
+									? System.getProperty("browser").toLowerCase() 
+											: prop.getProperty("browser").toLowerCase();
+		
+		if (browserName.contains("chrome")) {	
+			// headless mode bedeutet, dass der Test ausgeführt wird, ohne den Browser zu starten 
+			ChromeOptions options = new ChromeOptions();
+			if (browserName.contains("headless")) {
+				options.addArguments("headless");				
+			}
+			driver = new ChromeDriver(options);
+			
+		} else if (browserName.equalsIgnoreCase("firefox")) {
+			driver = new FirefoxDriver();
+		
+		} else if (browserName.equalsIgnoreCase("edge")) {
+			driver = new EdgeDriver();
+
+		} else {
+			driver = new ChromeDriver();
+		}
+
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		
+		return driver;
+	}
+	
+	// Rückgabe einer Liste mit 2 Argumenten - 1. Argument = HashMap, 2. Argument = HashMap 
+	public List<HashMap<String, String>> getJsonDataToMap(String filePath) throws IOException {
+		
+		//read json to string
+		File file = new File(filePath);
+		String jsonContent = FileUtils.readFileToString(file, StandardCharsets.UTF_8);
+		
+		//String to HashMap using Jackson Databind (pom.xml)
+		ObjectMapper mapper = new ObjectMapper();
+		
+		// 1. Parameter: String, der in einen HashMap konvertiert werden soll
+		// 2. Parameter: besagt, wie konvertiert werden soll d.h. in der json-Datei
+		// 				 ist ein Array mit 2 Indices ==> daraus werden 2 HashMaps erstellt
+		//               ==> und diese 2 HashMaps werden in eine Liste gepackt
+		// d.h. der String wird eine Liste mit 2 HashMaps konvertiert 
+		List<HashMap<String, String>> data = 
+				mapper.readValue(jsonContent, 
+						new TypeReference<List<HashMap<String, String>>>() {});
+		
+		return data;
+	}
+	
+	public String getScreenshot(String testCaseName, WebDriver driver) throws IOException {
+		
+		TakesScreenshot ts = (TakesScreenshot)driver;
+		File source = ts.getScreenshotAs(OutputType.FILE);
+		File file = new File(System.getProperty("user.dir") + 
+				"//reports//" + testCaseName + ".png");
+		FileUtils.copyFile(source, file);
+		
+		// gibt die Datei inkl. Pfad mit dem gespeicherten Screenshot zurück
+		return System.getProperty("user.dir") + "//reports//" + testCaseName + ".png";
+	}
+	
+	// alwaysRun = true - wird hier angegeben, damit, wenn man Testfälle gruppiert hat
+	// (wie @Test(groups = {"ErrorHandling"}) in ErrorValidationTest), die @BeforeMethod 
+	// ausgeführt wird, wenn ErrorValidationTests.xml aufgerufen wird
+	@BeforeMethod(alwaysRun = true)
+	public LandingPage launchApplication() throws IOException {
+		
+		driver = initializeDriver();
+		
+		// Login mit Weiterleitung zum Produktkatalog
+		landingPage = new LandingPage(driver);
+		landingPage.goTo();
+
+		return landingPage;
+	}
+	
+	@AfterMethod(alwaysRun = true)
+	public void tearDown() {
+		driver.quit();
+	}
+
+}
