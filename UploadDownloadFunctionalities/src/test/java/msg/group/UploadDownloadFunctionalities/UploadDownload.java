@@ -67,6 +67,7 @@ public class UploadDownload {
 		System.out.println(actualPrice);
 		Assert.assertEquals(updatedValue, actualPrice);
 		
+		Thread.sleep(500);
 		driver.close();
 	}
 
