@@ -1,56 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="3" total="5" passed="2" failed="0" skipped="0">
+<testng-results ignored="0" total="2" passed="2" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-06-12T17:24:20 MESZ" name="Suite" finished-at="2025-06-12T17:24:35 MESZ" duration-ms="15871">
+  <suite started-at="2025-06-17T12:04:24 MESZ" name="Default suite" finished-at="2025-06-17T12:04:34 MESZ" duration-ms="10461">
     <groups>
-      <group name="Purchase">
-        <method signature="SubmitOrderTest.submitOrder(java.util.HashMap)[pri:0, instance:msg.group.tests.SubmitOrderTest@79e4c792]" name="submitOrder" class="msg.group.tests.SubmitOrderTest"/>
-      </group> <!-- Purchase -->
+      <group name="cucumber">
+        <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:cucumber.TestNGTestRunner@70ed52de]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
+      </group> <!-- cucumber -->
     </groups>
-    <test started-at="2025-06-12T17:24:20 MESZ" name="Error Validations Test" finished-at="2025-06-12T17:24:20 MESZ" duration-ms="10">
-    </test> <!-- Error Validations Test -->
-    <test started-at="2025-06-12T17:24:20 MESZ" name="Submit Order Test" finished-at="2025-06-12T17:24:35 MESZ" duration-ms="15871">
-      <class name="msg.group.tests.SubmitOrderTest">
-        <test-method is-config="true" signature="launchApplication()[pri:0, instance:msg.group.tests.SubmitOrderTest@79e4c792]" started-at="2025-06-12T17:24:20 MESZ" name="launchApplication" finished-at="2025-06-12T17:24:26 MESZ" duration-ms="5765" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- launchApplication -->
-        <test-method signature="submitOrder(java.util.HashMap)[pri:0, instance:msg.group.tests.SubmitOrderTest@79e4c792]" started-at="2025-06-12T17:24:26 MESZ" name="submitOrder" data-provider="getData" finished-at="2025-06-12T17:24:29 MESZ" duration-ms="3312" status="PASS">
+    <test started-at="2025-06-17T12:04:24 MESZ" name="Default test" finished-at="2025-06-17T12:04:34 MESZ" duration-ms="10461">
+      <class name="cucumber.TestNGTestRunner">
+        <test-method is-config="true" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:cucumber.TestNGTestRunner@70ed52de]" started-at="2025-06-17T12:04:24 MESZ" name="setUpClass" finished-at="2025-06-17T12:04:24 MESZ" duration-ms="413" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[{password=Paul3005, product=ZARA COAT 3, email=ewaldostehr@gmail.com}]]>
+                <![CDATA[org.testng.TestRunner@17273273]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- submitOrder -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:msg.group.tests.SubmitOrderTest@79e4c792]" started-at="2025-06-12T17:24:29 MESZ" name="tearDown" finished-at="2025-06-12T17:24:29 MESZ" duration-ms="159" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-        <test-method is-config="true" signature="launchApplication()[pri:0, instance:msg.group.tests.SubmitOrderTest@79e4c792]" started-at="2025-06-12T17:24:29 MESZ" name="launchApplication" finished-at="2025-06-12T17:24:32 MESZ" duration-ms="3129" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- launchApplication -->
-        <test-method signature="submitOrder(java.util.HashMap)[pri:0, instance:msg.group.tests.SubmitOrderTest@79e4c792]" started-at="2025-06-12T17:24:32 MESZ" name="submitOrder" data-provider="getData" finished-at="2025-06-12T17:24:35 MESZ" duration-ms="3146" status="PASS">
+        </test-method> <!-- setUpClass -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:cucumber.TestNGTestRunner@70ed52de]" started-at="2025-06-17T12:04:24 MESZ" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2025-06-17T12:04:28 MESZ" duration-ms="3961" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[{password=Paul3005, product=ADIDAS ORIGINAL, email=ewaldostehr@gmail.com}]]>
+                <![CDATA["Login with incorrect password"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Error Validation"]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- submitOrder -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:msg.group.tests.SubmitOrderTest@79e4c792]" started-at="2025-06-12T17:24:35 MESZ" name="tearDown" finished-at="2025-06-12T17:24:35 MESZ" duration-ms="148" status="PASS">
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:cucumber.TestNGTestRunner@70ed52de]" started-at="2025-06-17T12:04:28 MESZ" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2025-06-17T12:04:34 MESZ" duration-ms="6044" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Positive Test of Submitting the order"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Purchase the order from Ecommerce Website"]]>
+              </value>
+            </param>
+          </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- tearDown -->
-      </class> <!-- msg.group.tests.SubmitOrderTest -->
-    </test> <!-- Submit Order Test -->
-  </suite> <!-- Suite -->
+        </test-method> <!-- runScenario -->
+        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:cucumber.TestNGTestRunner@70ed52de]" started-at="2025-06-17T12:04:34 MESZ" name="tearDownClass" finished-at="2025-06-17T12:04:34 MESZ" duration-ms="11" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDownClass -->
+      </class> <!-- cucumber.TestNGTestRunner -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
 </testng-results>

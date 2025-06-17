@@ -2,12 +2,12 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-06-17T11:38:35 MESZ" name="Default suite" finished-at="2025-06-17T11:38:35 MESZ" duration-ms="517">
+  <suite started-at="2025-06-17T11:49:26 MESZ" name="Default suite" finished-at="2025-06-17T11:49:26 MESZ" duration-ms="523">
     <groups>
     </groups>
-    <test started-at="2025-06-17T11:38:35 MESZ" name="Default test" finished-at="2025-06-17T11:38:35 MESZ" duration-ms="517">
+    <test started-at="2025-06-17T11:49:26 MESZ" name="Default test" finished-at="2025-06-17T11:49:26 MESZ" duration-ms="523">
       <class name="dataDriven.excelDataProvider.excelTest">
-        <test-method signature="test()[pri:0, instance:dataDriven.excelDataProvider.excelTest@48aca48b]" started-at="2025-06-17T11:38:35 MESZ" name="test" finished-at="2025-06-17T11:38:35 MESZ" duration-ms="489" status="PASS">
+        <test-method signature="test()[pri:0, instance:dataDriven.excelDataProvider.excelTest@48aca48b]" started-at="2025-06-17T11:49:26 MESZ" name="test" finished-at="2025-06-17T11:49:26 MESZ" duration-ms="495" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- test -->

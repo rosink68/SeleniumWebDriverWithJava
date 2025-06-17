@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
 
 public class StreamsAndLambdaExpression {
 		
-	//@Test
+	@Test
 	public void regular() {
 
 		ArrayList<String> names = new ArrayList<String>();
@@ -51,7 +51,7 @@ public class StreamsAndLambdaExpression {
 
 	}
 
-	//@Test
+	@Test
 	public void streamFilter() {
 
 		ArrayList<String> names = new ArrayList<String>();
@@ -104,7 +104,7 @@ public class StreamsAndLambdaExpression {
 					  .forEach(nameFiltered->System.out.println(nameFiltered));
 	}
 	
-	//@Test
+	@Test
 	public void streamMap() {
 		
 		// die Namen, die auf "a" enden, in Großbuchstaben ausgeben
@@ -140,7 +140,7 @@ public class StreamsAndLambdaExpression {
 		System.out.println("===========================");
 	}
 	
-	//@Test
+	@Test
 	public void mapTwoStreamList() {
 		
 		// 2 Listen zusammenfügen
